@@ -5,17 +5,16 @@ This is a solution to the [Results summary component challenge on Frontend Mento
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+     - [The challenge](#the-challenge)
+     - [Screenshot](#screenshot)
+     - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+     - [Built with](#built-with)
+     - [What I learned](#what-i-learned)
+     - [Continued development](#continued-development)
+     - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
 
 ## Overview
 
@@ -38,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution URL here](https://www.frontendmentor.io/solutions/responsive-result-summary-component-F8BUid9162)
+- Live Site URL: [live site URL](https://ckola99.github.io/results-summary-component/)
 
 ## My process
 
@@ -50,59 +49,72 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I learned that data attributes can be used better than css selectors because their children elements do not inherit the padding style added to that element using a data attribute. The code snippet below shows how it was used to create the gap between the elements in the Results container (left-side of project) :
 
-To see how you can add code snippets, see below:
+```CSS
+	.grid-flow {
+	display: grid;
+	align-content: start;
+	gap: 1rem;
+}
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+
+/* This prevents the inheritance that custom properties give their children elements and creates the desired gap */
+.grid-flow[data-spacing="large"] {
+	gap: 2rem;
 }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+
+This was interesting to me because it is a cleaner way to add padding, gaps and desired looks to my layout. I also used data attributes to make the divs background color and svg color. This is a clean way of writing code because if I change the color in one place it changes that div entirely saving time and making life a lot easier with maintainable clean code, see below:
+
+```CSS
+
+.summary-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem;
+	border-radius: .5rem;
+	background-color: hsl(var(--item-color), .1);
 }
+
+.summary-item svg {
+	stroke: hsl(var(--item-color));
+}
+
+.item-title {
+	color: hsl(var(--item-color));
+	font-weight: var(--fw-bold);
+}
+
+.summary-item[data-item-type="accent-1"] {
+	--item-color: var(--Light-red);
+}
+
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The code above taught me a lot about how I can use variables even as a definition in the middle of my css code and I do not only need to make it a :root.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I learned how to make padding in one spot using two rules and changing it in one area changes everything easily. I also learned how to write better media queries and effective workflow to make my projects better.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I personally want to use the skills and tricks I learned making this project to improve my clean css writing and clean code. I want to use this project as a building block to writing better code and use data attributes more. I also want to increase my confidence in layout skills.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Youtube](https://youtu.be/KqFAs5d3Yl8?si=W-b5sS0Mn-ritC9V) - A bit of hand holding but this video taught me a lot about data attributes, padding, variables and custom properties.
+- [MDN](https://developer.mozilla.org/en-US/) - this website is what I used to make sure I used the correct selectors and available properties.
+- [ChatGPT](https://chatgpt.com) - I used chatgpt for small queries about my code where I couldn't necessarily see issues.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@Ckola99](https://www.frontendmentor.io/profile/Ckola99)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Here I would like to tip my hat to Kevin Powell and his youtube channel for teaching me new things and ways to use things I already knew in a professional manner.
