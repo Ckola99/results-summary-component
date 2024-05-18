@@ -1,0 +1,263 @@
+/* Fonts */
+@font-face {
+	font-family: "Hanken Grotesk";
+	src: url(./assets/fonts/HankenGrotesk-VariableFont_wght.ttf)
+		format("truetype");
+	font-weight: 100 900;
+}
+
+/* CSS reset */
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	font-size: 18px; /* font size as per style guide */
+	font-family: "Hanken Grotesk";
+}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+#root,
+#__next {
+	isolation: isolate;
+}
+
+/* Variables */
+
+:root {
+	--Light-red: 0, 100%, 67%;
+	--Orangey-yellow: 39, 100%, 56%;
+	--Green-teal: 166, 100%, 37%;
+	--Cobalt-blue-no-hsl: 234, 85%, 45%;
+	--Cobalt-blue: hsl(234, 85%, 45%);
+
+	/* gradients */
+	--Light-slate-blue-bg: hsl(252, 100%, 67%);
+	--Light-royal-blue-bg: hsl(241, 81%, 54%);
+	--Violet-blue-circle: hsla(256, 72%, 46%, 1);
+	--Persian-blue-circle: hsla(241, 72%, 46%, 0);
+
+	/* Neutral colours */
+	--White: hsl(0, 0%, 100%);
+	--Pale-blue: hsl(221, 100%, 96%);
+	--Light-lavender: hsl(241, 100%, 89%);
+	--Dark-gray-blue: hsl(224, 30%, 27%);
+	--Dark-gray-blue-hsl: 224, 30%, 27%;
+
+
+	/* font weight */
+	--fw-regular: 500;
+	--fw-bold: 700;
+	--fw-black: 800;
+
+	/* button gradient */
+	--button-grad: hsla(241, 81%, 54%, 0.9);
+	--button-grad-bg: 241, 81%, 54%;
+
+}
+
+@media only screen and (min-width: 600px) {
+	body {
+		min-height: 100vh;
+		display: grid;
+		place-items: center;
+	}
+}
+
+.section-title {
+	font-weight: var(--fw-bold);
+	font-size: 1rem;
+}
+
+.flex-group {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	flex-wrap: wrap;
+}
+
+.grid-flow {
+	display: grid;
+	align-content: start;
+	gap: 1rem;
+}
+
+
+/* This prevents the inheritance that custom properties give their children elements and creates the desired gap */
+.grid-flow[data-spacing="large"] {
+	gap: 2rem;
+}
+
+button {
+	color: var(--White);
+	line-height: 1;
+	background-color: var(--Dark-gray-blue);
+	padding: 1rem 2rem;
+	border-radius: 100vw;
+	border: 0;
+	cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+	background: linear-gradient(
+		var(--button-grad) 50%,
+		var(--Cobalt-blue) 90%
+	);
+}
+
+.result-summary {
+	--border-radius: 2rem; /* when this is changed all border-radii change */
+	--padding: 2.5rem; /* when this is changed all padding changes for both containers */
+	max-width: 46rem;
+	display: grid;
+}
+
+@media only screen and (min-width: 600px) {
+	.result-summary {
+		margin-inline: 1rem;  /* This has no effect on large screens but has an effect on smaller screens and is a margin of the left & right*/
+		grid-template-columns: 1fr 1fr;
+		border-radius: var(--border-radius);
+		box-shadow: 0.5rem 1rem 0.75rem var(--Pale-blue);
+		/* overflow: hidden; ensures that the border radius is evident on the left side but not on the right side. Share the same border as parent*/
+	}
+}
+
+@media (max-width: 599px) {
+	.result-summary {
+		grid-template-columns: 1fr;
+	}
+}
+
+.results {
+	text-align: center;
+	padding: var(--padding) calc(var(--padding) * 1.5);
+	background: linear-gradient(
+		hsl(var(--button-grad-bg), .95) 35%,
+		var(--Cobalt-blue) 65%
+	);
+	color: hsl(0, 0%, 100%, 0.7);
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+@media (min-width: 600px) {
+	.results {
+		border-radius: var(--border-radius);
+	}
+}
+
+
+.result-score {
+	display: grid;
+	place-content: center;
+	width: 12rem;
+	margin-inline: auto;
+	background: linear-gradient(
+		var(--Cobalt-blue) 60%,
+		hsl(var(--button-grad-bg), .85)
+	);
+	aspect-ratio: 1 / 1; /* ensures perfect cirle */
+	border-radius: 50%;
+}
+
+.result-score span {
+	display: block;
+	font-size: 5rem;
+	font-weight: var(--fw-black);
+	line-height: 1;
+	color: white;
+}
+
+.result-rank {
+	color: var(--White);
+	font-size: 1.5rem;
+	font-weight: var(--fw-bold);
+}
+
+.summary {
+	padding: var(--padding);
+}
+
+.summary-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem;
+	border-radius: .5rem;
+	background-color: hsl(var(--item-color), .1);
+}
+
+.summary-item svg {
+	stroke: hsl(var(--item-color));
+}
+
+.item-title {
+	color: hsl(var(--item-color));
+	font-weight: var(--fw-bold);
+}
+
+.summary-item[data-item-type="accent-1"] {
+	--item-color: var(--Light-red);
+}
+
+.summary-item[data-item-type="accent-2"] {
+	--item-color: var(--Orangey-yellow);
+}
+
+.summary-item[data-item-type="accent-3"] {
+	--item-color: var(--Green-teal);
+}
+
+.summary-item[data-item-type="accent-4"] {
+	--item-color: var(--Cobalt-blue-no-hsl);
+}
+
+.item-score {
+	font-weight: var(--fw-black);
+	color: hsl(var(--Dark-gray-blue-hsl), 0.7);
+}
+
+.item-score span {
+	color: black;
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
